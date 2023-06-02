@@ -143,24 +143,29 @@ public class PizzaService {
     //get the order details
     public Optional<Order> getOrderDetails(String orderId) {
 
-        //build url with uricomponentsbuilder
-        String url = UriComponentsBuilder.fromUriString(this.pizzaUrl + orderId).toUriString();
+        return this.repo.getOrder(orderId);
 
-        //instantiate requestentity
-        //no need to add any attribute to request entity
-        RequestEntity req = RequestEntity.get(url).build();
 
-        //instantiate resttemplate
-        RestTemplate rt = new RestTemplate();
+
+
+    //     //build url with uricomponentsbuilder
+    //     String url = UriComponentsBuilder.fromUriString(this.pizzaUrl + orderId).toUriString();
+
+    //     //instantiate requestentity
+    //     //no need to add any attribute to request entity
+    //     RequestEntity req = RequestEntity.get(url).build();
+
+    //     //instantiate resttemplate
+    //     RestTemplate rt = new RestTemplate();
         
-        //responseenetiy
-        ResponseEntity<String> resp = rt.exchange(req, String.class);
-        //create an order from the responseentity
-        Order o = Order.createJSON(resp.getBody());
-        //return if not null
-        if (o != null){
-            return Optional.empty();
-        }
-        return Optional.of(o);
+    //     //responseenetiy
+    //     ResponseEntity<String> resp = rt.exchange(req, String.class);
+    //     //create an order from the responseentity
+    //     Order o = Order.createJSON(resp.getBody());
+    //     //return if not null
+    //     if (o != null){
+    //         return Optional.empty();
+    //     }
+    //     return Optional.of(o);
     }
 }
