@@ -4,15 +4,15 @@
 
 FROM maven:3.8.3-openjdk-17 AS build
 
-COPY src /tryingworkshop16/src
-COPY pom.xml /tryingworkshop16
+COPY src /home/app/src
+COPY pom.xml /home/app
 
 ARG REDISHOST
 ARG REDISPORT
 ARG REDISUSER
 ARG REDISPASSWORD
 
-RUN mvn -f /tryingworkshop16/pom.xml clean package
+RUN mvn -f /home/app/pom.xml clean package
 
 #
 # second stage
@@ -25,7 +25,7 @@ ARG REDISPORT
 ARG REDISUSER
 ARG REDISPASSWORD
 
-COPY --from=build /tryingworkshop16/target/tryingworkshop16-0.0.1-SNAPSHOT.jar /tryingworkshop16.jar
+COPY --from=build /home/app/target/tryingworkshop16-0.0.1-SNAPSHOT.jar /usr/local/lib/tryingworkshop16.jar
 
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/tryingworkshop16.jar"]
