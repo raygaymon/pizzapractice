@@ -60,10 +60,12 @@ public class Order implements Serializable{
     public double getPizzaCost(){
 
         Double pizzaCost = this.getTotalCost();
-        if (this.getRush() == true) {
-            pizzaCost += 2;
-        }
+
         this.setTotalCost(pizzaCost);
+
+        if (this.getRush()) {
+            this.setTotalCost(pizzaCost + 2);
+        }        
 
         return pizzaCost;
     }

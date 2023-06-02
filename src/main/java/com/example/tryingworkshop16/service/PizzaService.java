@@ -95,13 +95,14 @@ public class PizzaService {
                 totalCost*=1.5;
                 break;
         }
+
         //multiply by quantity
         totalCost *= o.getQuantity();
         //if statement for rush
 
-        if (o.getRush()) {
-            totalCost += 2;
-        }
+        // if (o.getRush()) {
+        //     totalCost += 2;
+        // }
 
         o.setTotalCost(totalCost);
         return totalCost;

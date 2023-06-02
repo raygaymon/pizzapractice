@@ -48,7 +48,7 @@ public class RedisConfig {
 
         r.setConnectionFactory(jedisFac);
         r.setKeySerializer(new StringRedisSerializer());
-        r.setValueSerializer(r.getKeySerializer());
+        r.setValueSerializer(new StringRedisSerializer());
         return r;
     }
 }

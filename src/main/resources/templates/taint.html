@@ -6,7 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body data-th-object="${order}">
     <h1>suck my cock</h1>
+    <table style="border: black 1px solid; padding : 10px; margin: auto;">
+        <tr>
+            <td colspan="2">
+                <h2 style="text-align: center;">Order Details</h2>
+            </td>
+        </tr>
+        <tr>
+            <td>Name: </td>
+            <td data-th-text="*{name}"></td>
+        </tr>
+        <tr>
+            <td>Order ID: </td>
+            <!--add a href to here to link to json-->
+            <td><a href="/taint/{orderId}(orderId = ${order.orderId})" data-th-text="*{orderId}"></td>
+        </tr>
+        <tr>
+            <td>Your order will be delivered to: </td>
+            <td data-th-text="*{address}"></td>
+        </tr>
+        <tr>
+            <td>Pizza Cost: </td>
+            <!--use dollarsign for methods and * for attributes-->
+            <td data-th-text="${order.getPizzaCost()}"></td>
+        </tr>
+        <tr data-th-if="${order.getRush()}" >
+            <!--th-ifs go on the tr-->
+            <td>Rush Surchage: </td>
+            <td>$2</td>
+        </tr>
+        <tr>
+            <td>Total totalCost: </td>
+            <td data-th-text="*{totalCost}"></td>
+        </tr>        
+    </table>
+    <!--add th-object-->
+    <!--add th-field for each attribute to dispplay-->
+    <!--orderId link to restcontroller to see order-->
+    <!--rush to only display if selected-->
 </body>
 </html>
