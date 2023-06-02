@@ -10,7 +10,6 @@ COPY pom.xml /home/app
 ARG REDISHOST
 ARG REDISPORT
 ARG REDISUSER
-#this must match applicatio.properties knn
 ARG REDISPASSWORD
 
 RUN mvn -f /home/app/pom.xml clean package
@@ -26,7 +25,6 @@ ARG REDISPORT
 ARG REDISUSER
 ARG REDISPASSWORD
 
-#use mvn clean package to find the jar file needed to add here
 COPY --from=build /home/app/target/tryingworkshop16-0.0.1-SNAPSHOT.jar /usr/local/lib/tryingworkshop16.jar
 
 EXPOSE 8080
