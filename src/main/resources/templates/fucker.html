@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="text-align: center">Order Delivery Details</h1>
+    <table style="border: black solid 1px; padding: 10px; margin-left: auto; margin-right: auto;">
+        <form consumes= "application/x-www-form-urlencoded" data-th-action="@{/pizza/fucker}" data-th-object="${delivery}" method="POST">
+            <tr>
+                <td>Name:</td>
+                <td>
+                    <input type="text" data-th-field="*{name}" size="30"/><!--correct but he controlled textbox size and placeholder value-->
+                </td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td>
+                    <input type="text" data-th-field="*{address}" size="30"/><!--correct but same as name he controlled textbox size and placeholder value-->
+                </td>
+            </tr>
+            <tr>
+                <td>Phone:</td>
+                <td>
+                    <input type="tel" data-th-field="*{phone}" size="30"/><!--wrong, use input type tel to make it a phoen number input-->
+                </td>
+            </tr>
+            <tr>
+                <td>Rush:</td>
+                <td>
+                    <input type="checkbox" data-th-field="*{rush}"/><!--correct-->
+                </td>
+            </tr>
+            <tr>
+                <td>Comments:</td>
+                <td>
+                    <textarea data-th-field="*{comments}" cols="30" rows="5"></textarea><!--wrong. control size of textbox with column and row span. doesnt work with width and height-->
+                    <!--use textarea not input textarea-->
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div>
+                        <button formaction="/" formmethod="GET" type="submit">Cancel Order<!--can inject formmethods get/post and formaction into the button--><!--using a works but very ugly-->
+                        </button>
+                        <button type="submit">Place Order</button>
+                        <!--input is a null but button can have content, so cannot use input when json is invovled-->
+                        <!--no need formaction and formmethod for the placeorder next step button-->
+                    </div>
+                </td>
+            </tr>
+        </form>
+    </table>
+</body>
+</html>
