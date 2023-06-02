@@ -27,5 +27,5 @@ ARG REDISPASSWORD
 
 COPY --from=build /home/app/target/tryingworkshop16-0.0.1-SNAPSHOT.jar /usr/local/lib/tryingworkshop16.jar
 
-EXPOSE 8080
+EXPOSE 6379
 ENTRYPOINT ["java", "-jar", "/tryingworkshop16.jar"]
